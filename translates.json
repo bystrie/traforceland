@@ -1,0 +1,262 @@
+{
+	"ru": {
+		"title": "Сайт знакомств для взрослых",
+		"topLinks": {
+			"0": "Следовать",
+			"1": "Для Вас"
+		},
+		"primaryBtn": "Кликай <br> если ты 18+",
+		"secondaryBtn": "Мне нет 18 лет",
+		"description": "Готовы повеселиться?"
+	},
+	"en": {
+		"title": "Adult Dating Site",
+		"topLinks": {
+			"0": "Following",
+			"1": "For you"
+		},
+		"primaryBtn": "Click <br> if you are 18+",
+		"secondaryBtn": "I'm not 18+ years old",
+		"description": "Ready to have fun?"
+	},
+	"it": {
+		"title": "Sito di incontri per adulti",
+		"topLinks": {
+			"0": "Seguendo",
+			"1": "Per te"
+		},
+		"primaryBtn": "Clicca <br> se hai 18+ anni o più",
+		"secondaryBtn": "Non ho 18+ anni",
+		"description": "Pronti a divertirvi?"
+	},
+	"es": {
+		"title": "Sitio de citas para adultos",
+		"topLinks": {
+			"0": "Siguiendo",
+			"1": "Para ti"
+		},
+		"primaryBtn": "Haz clic <br> si tienes 18+ años o más",
+		"secondaryBtn": "No tengo 18+ años",
+		"description": "¿Listo para divertirte?"
+	},	
+	"pt": {
+		"title": "Site de encontros para adultos",
+		"topLinks": {
+			"0": "Seguindo",
+			"1": "Para você"
+		},
+		"primaryBtn": "Clique <br> se você tem 18+ anos ou mais",
+		"secondaryBtn": "Eu não tenho 18+ anos",
+		"description": "Pronto para se divertir?"
+	},
+	"de": {
+		"title": "Dating-Website für Erwachsene",
+		"topLinks": {
+			"0": "Folgen",
+			"1": "Für dich"
+		},
+		"primaryBtn": "Klicken Sie <br>, wenn Sie 18+ Jahre oder älter sind",
+		"secondaryBtn": "Ich bin nicht 18+ Jahre alt",
+		"description": "Bereit, Spaß zu haben?"
+	},	
+	"pl": {
+		"title": "Strona randkowa dla dorosłych",
+		"topLinks": {
+			"0": "Śledzenie",
+			"1": "Dla ciebie"
+		},
+		"primaryBtn": "Kliknij <br>, jeśli masz 18+ lat lub więcej",
+		"secondaryBtn": "Nie mam 18+ lat",
+		"description": "Gotowy na zabawę?"
+	},	
+	"tr": {
+		"title": "Yetişkinler için tanışma sitesi",
+		"topLinks": {
+			"0": "Takip et",
+			"1": "Senin için"
+		},
+		"primaryBtn": "18+ yaşını doldurduysanız <br> tıklayın",
+		"secondaryBtn": "Ben 18+ yaşında değilim",
+		"description": "Eğlenmeye hazır mısın?"
+	},	
+	"fr": {
+		"title": "Site de rencontres pour adultes",
+		"topLinks": {
+			"0": "Suivant",
+			"1": "Pour vous"
+		},
+		"primaryBtn": "Cliquez <br> si vous avez 18+ ans ou plus",
+		"secondaryBtn": "Je n'ai pas 18+ ans",
+		"description": "Prêt à s'amuser ?"
+	},	
+	"id": {
+		"title": "Situs Kencan untuk Dewasa",
+		"topLinks": {
+			"0": "Mengikuti",
+			"1": "Untuk Anda"
+		},
+		"primaryBtn": "Klik <br> jika Anda berusia 18+ tahun atau lebih",
+		"secondaryBtn": "Saya belum berusia 18+ tahun",
+		"description": "Siap untuk bersenang-senang?"
+	},	
+	"uk": {
+		"title": "Сайт знайомств для дорослих",
+		"topLinks": {
+			"0": "Слідувати",
+			"1": "Для вас"
+		},
+		"primaryBtn": "Натисніть <br> якщо вам виповнилося 18+ років",
+		"secondaryBtn": "Мені ще не виповнилося 18+ років",
+		"description": "Готові розважитися?"
+	},	
+	"zh": {
+		"title": "成人交友网站",
+		"topLinks": {
+			"0": "关注",
+			"1": "为您"
+		},
+		"primaryBtn": "如果您年满18岁，请点击 <br>",
+		"secondaryBtn": "我未满18岁",
+		"description": "准备好了吗？"
+	},	
+	"kz": {
+		"title": "Ересектер үшін қарызшалардың сайты",
+		"topLinks": {
+			"0": "Келесі",
+			"1": "Сіз үшін"
+		},
+		"primaryBtn": "Егер сіз 18+ жасқа толған болсаңыз, басу <br>",
+		"secondaryBtn": "Мен 18+ жасқа толмағанмын",
+		"description": "Көңілді болуға дайынсың ба?"
+	},	
+	"uz": {
+		"title": "Kattalar uchun tanishuv sayti",
+		"topLinks": {
+			"0": "Kuzatish",
+			"1": "Siz uchun"
+		},
+		"primaryBtn": "Agar siz 18+ yoshdan kattaroq bo'lsangiz, bosing <br>",
+		"secondaryBtn": "Men 18+ yoshdan kichikman",
+		"description": "O'yin-kulgiga tayyormisiz?"
+	},	
+	"ro": {
+		"title": "Site de întâlniri pentru adulți",
+		"topLinks": {
+			"0": "Urmărire",
+			"1": "Pentru tine"
+		},
+		"primaryBtn": "Faceți clic <br> dacă aveți peste 18+ ani",
+		"secondaryBtn": "Nu am 18+ ani",
+		"description": "Ești gata să te distrezi?"
+	},	
+	"nl": {
+		"title": "Datingsite voor volwassenen",
+		"topLinks": {
+			"0": "Volgen",
+			"1": "Voor jou"
+		},
+		"primaryBtn": "Klik <br> als je 18+ jaar of ouder bent",
+		"secondaryBtn": "Ik ben geen 18+ jaar oud",
+		"description": "Klaar om plezier te hebben?"
+	},	
+	"sv": {
+		"title": "Dejtingsida för vuxna",
+		"topLinks": {
+			"0": "Följer",
+			"1": "För dig"
+		},
+		"primaryBtn": "Klicka <br> om du är 18+ år eller äldre",
+		"secondaryBtn": "Jag är inte 18+ år gammal",
+		"description": "Redo att ha kul?"
+	},	
+	"hu": {
+		"title": "Társkereső oldal felnőtteknek",
+		"topLinks": {
+			"0": "Követés",
+			"1": "Neked"
+		},
+		"primaryBtn": "Kattintson <br>, ha 18+ éves vagy idősebb",
+		"secondaryBtn": "Nem vagyok 18+ éves",
+		"description": "Készen állsz a szórakozásra?"
+	},	
+	"fi": {
+		"title": "Aikuisten treffisivusto",
+		"topLinks": {
+			"0": "Seuraava",
+			"1": "Sinulle"
+		},
+		"primaryBtn": "Klikkaa <br>, jos olet 18+ vuotta täyttänyt",
+		"secondaryBtn": "En ole 18+ vuotta vanha",
+		"description": "Oletko valmis pitämään hauskaa?"
+	},	
+	"cs": {
+		"title": "Seznamka pro dospělé",
+		"topLinks": {
+			"0": "Sledování",
+			"1": "Pro vás"
+		},
+		"primaryBtn": "Klikněte <br>, pokud jste starší 18+ let",
+		"secondaryBtn": "Nemám 18+ let",
+		"description": "Jste připraveni se bavit?"
+	},	
+	"bg": {
+		"title": "За запознанства за възрастни",
+		"topLinks": {
+			"0": "Следване",
+			"1": "За вас"
+		},
+		"primaryBtn": "Кликнете <br>, ако сте на 18+ години или повече",
+		"secondaryBtn": "Аз не съм на 18+ години",
+		"description": "Готови ли сте да се забавлявате?"
+	},	
+	"lt": {
+		"title": "Pažinčių svetainė suaugusiems",
+		"topLinks": {
+			"0": "Sekantis",
+			"1": "Jums"
+		},
+		"primaryBtn": "Spustelėkite <br>, jei jums yra 18+ metų arba daugiau",
+		"secondaryBtn": "Man nėra 18+ metų",
+		"description": "Pasiruošę linksmintis?"
+	},	
+	"ds": {
+		"title": "Datingside for voksne",
+		"topLinks": {
+			"0": "Følger",
+			"1": "For dig"
+		},
+		"primaryBtn": "Klik <br>, hvis du er 18+",
+		"secondaryBtn": "Jeg er ikke 18+ år gammel",
+		"description": "Klar til å ha det gøy?"
+	},	
+	"sk": {
+		"title": "Zoznamka pre dospelých",
+		"topLinks": {
+			"0": "Sledovanie",
+			"1": "Pre vás"
+		},
+		"primaryBtn": "Kliknite <br>, ak ste starší ako 18+ rokov",
+		"secondaryBtn": "Nemám 18+ rokov",
+		"description": "Si pripravený na zábavu?"
+	},	
+	"lv": {
+		"title": "Iepazīšanās vietne pieaugušajiem",
+		"topLinks": {
+			"0": "Sekošana",
+			"1": "Jums"
+		},
+		"primaryBtn": "Noklikšķiniet <br>, ja jums ir 18+ gadi vai vairāk",
+		"secondaryBtn": "Man nav 18+ gadu",
+		"description": "Vai esi gatavs izklaidēties?"
+	},	
+	"no": {
+		"title": "Datingside for voksne",
+		"topLinks": {
+			"0": "Følger",
+			"1": "For deg"
+		},
+		"primaryBtn": "Klikk <br> hvis du er 18+",
+		"secondaryBtn": "Jeg er ikke 18+ år gammel",
+		"description": "Klar til å ha det gøy?"
+	}	
+}
