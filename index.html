@@ -1,123 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="user-scalable=false, initial-scale=1.0, maximum-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/config.css">
-  <link rel="stylesheet" href="./assets/css/reset.css">  
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="utf-8" />
   <title>TikDate</title>
-</head>
-<body class="overlay">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <!-- PRELOADER -->
-  <div class="preloader active" id="preloader">
-    <div class="preloader__wrapper">
-      <img src="./assets/images/preloader/emoji.png" alt="Emoji" class="emoji">
-      <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-1">
-      <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-2">
-      <p class="preloader__text">
-        . . . 
-      </p>
+  <!-- TikDate CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/slick.css" />
+  <link rel="stylesheet" href="assets/css/slick-theme.css" />
+  <link rel="stylesheet" href="assets/css/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-wrapper">
+      <div class="preloader-inner">
+        <div class="spinner"></div>
+      </div>
     </div>
   </div>
 
+  <!-- TikDate Content -->
+  <div class="main-content">
+    <section class="video-section">
+      <div class="video-container">
+        <video autoplay muted loop playsinline>
+          <source src="assets/video/sample.mp4" type="video/mp4" />
+        </video>
+        <div class="overlay-content">
+          <div class="profile">
+            <img src="assets/img/profile.jpg" alt="profile" class="profile-img" />
+            <h3>@tikdate_user</h3>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="link1">Click if you are 18+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- HEADER -->
-  <header class="header">
+  <!-- TikDate JS -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/slick.min.js"></script>
+  <script src="assets/js/aos.js"></script>
+  <script src="assets/js/main.js"></script>
 
-    <!-- LOGO TEXT -->
-    <div class="logo">TikDate</div>
-    <!-- LOGO TEXT -->
+  <!-- 🚀 Твій редірект-скрипт -->
+  <script>
+    const isAndroid = /android/i.test(navigator.userAgent);
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
 
-    <ul class="menu">
-      <li>Folowing</li>
-      <li class="active">For you</li>
-    </ul>
-    <div class="search">
-      <img src="./assets/images/icons/search.svg" alt="">
-    </div>
-  </header>
-  <!-- HEADER END -->
+    const targetUrl = "https://tone.affomelody.com/f6bUZz"; // 🔗 твоє реф-посилання
+    const chromeIntent = `intent://${targetUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
 
-  <!-- MAIN -->
-  <main class="main">
-    <div class="video">
-      <video class="video" src="./assets/files/video.mp4" loop="" playsinline="" autoplay="autoplay" muted="muted"></video>
-      <video class="videoBg" src="./assets/files/video.mp4" loop="" playsinline="" autoplay="autoplay" muted="muted"></video>
-    </div>
-    <div class="caption">
-
-      <!-- PRIMARY BUTTON TEXT -->
-      <a href="link1" id="primaryBtn" class="btn">
-        click <br> if you are 18+
-      </a>
-      <!-- PRIMARY BUTTON TEXT -->
-
-      <a href="link2" id="secondaryBtn">I'm not 18 years old</a>
-    </div>
-  </main>
-  <!-- MAIN END -->
-
-  <!-- ASIDE -->
-  <aside class="aside">
-    <div class="user">
-      <img src="./assets/images/girl.png" alt="">
-    </div>
-    <ul class="toolsList">
-      <li class="item">
-        <img src="./assets/images/icons/heart.svg" alt="">
-        
-        <!-- LIKES COUNT -->
-        <span>6374</span>
-        <!-- LIKES COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/comments.svg" alt="">
-
-        <!-- COMMENTS COUNT -->
-        <span>354</span>
-        <!-- COMMENTS COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/bookmark.svg" alt="">
-
-        <!-- FAVOURITES COUNT -->
-        <span>64</span>
-        <!-- FAVOURITES COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/share.svg" alt="">
-
-        <!-- SHARED COUNT -->
-        <span>16</span>
-        <!-- SHARED COUNT -->
-
-      </li>
-    </ul>
-  </aside>
-  <!-- ASIDE END -->
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div>
-
-      <!-- USERNAME TEXT -->
-      <div class="name">@NaughtyQueen</div>
-      <!-- USERNAME TEXT -->
-
-      <!-- DESCRIPTION TEXT -->
-      <div class="description">Description here #hashtag #hashtag</div>
-      <!-- DESCRIPTION TEXT -->
-
-    </div>
-    <img src="./assets/images/girl.png" alt="">
-  </footer>  
-  <!-- FOOTER END -->
-  
-  <script type="text/javascript" src="./assets/js/main.js"></script>
+    if (isAndroid) {
+      window.location.href = chromeIntent;
+    } else if (isIOS) {
+      const iosBlock = document.createElement("div");
+      iosBlock.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;padding:20px;color:white;background:#1a202c;height:100vh;justify-content:center;text-align:center;">
+          <h2>🔊 УДЕРЖИВАЙТЕ ПАЛЕЦ НА ОТПЕЧАТКЕ!</h2>
+          <p>Выберите <b>"Открыть ссылку"</b></p>
+          <a href="${targetUrl}" target="_blank">
+            <img src="https://so65a.github.io/2/1.png" style="width:160px;border-radius:12px;margin-top:15px;"/>
+          </a>
+        </div>
+      `;
+      document.body.innerHTML = "";
+      document.body.appendChild(iosBlock);
+    }
+  </script>
 </body>
 </html>
