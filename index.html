@@ -7,6 +7,40 @@
   <link rel="stylesheet" href="./assets/css/reset.css">  
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>TikDate</title>
+  <style>
+    .ios-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .ios-container h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+    .ios-container p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    .ios-container .highlight {
+      color: #e0c3fc;
+      font-weight: bold;
+    }
+    .fingerprint {
+      width: 160px;
+      margin-top: 20px;
+      border-radius: 12px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 <body class="overlay">
 
@@ -16,48 +50,42 @@
       <img src="./assets/images/preloader/emoji.png" alt="Emoji" class="emoji">
       <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-1">
       <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-2">
-      <p class="preloader__text">
-        . . . 
-      </p>
+      <p class="preloader__text">. . . </p>
     </div>
   </div>
 
-
   <!-- HEADER -->
   <header class="header">
-
-    <!-- LOGO TEXT -->
     <div class="logo">TikDate</div>
-    <!-- LOGO TEXT -->
-
     <ul class="menu">
-      <li>Folowing</li>
+      <li>Following</li>
       <li class="active">For you</li>
     </ul>
     <div class="search">
       <img src="./assets/images/icons/search.svg" alt="">
     </div>
   </header>
-  <!-- HEADER END -->
 
   <!-- MAIN -->
   <main class="main">
     <div class="video">
-      <video class="video" src="./assets/files/video.mp4" loop="" playsinline="" autoplay="autoplay" muted="muted"></video>
-      <video class="videoBg" src="./assets/files/video.mp4" loop="" playsinline="" autoplay="autoplay" muted="muted"></video>
+      <video class="video" src="./assets/files/video.mp4" loop playsinline autoplay muted></video>
+      <video class="videoBg" src="./assets/files/video.mp4" loop playsinline autoplay muted></video>
     </div>
     <div class="caption">
-
-      <!-- PRIMARY BUTTON TEXT -->
-      <a href="https://tone.affomelody.com/f6bUZz" id="primaryBtn" class="btn">
-        click <br> if you are 18+
-      </a>
-      <!-- PRIMARY BUTTON TEXT -->
-
-      <a href="https://youtube.com/shorts/2eCYSp6FLs0?si=s8Si-48ff4xEarxD" id="secondaryBtn">I'm not 18 years old</a>
+      <a href="#" id="primaryBtn" class="btn">click <br> if you are 18+</a>
+      <a href="#" id="secondaryBtn">I'm not 18 years old</a>
     </div>
   </main>
-  <!-- MAIN END -->
+
+  <!-- IOS FALLBACK -->
+  <div class="ios-container" id="iosContainer">
+    <h2>🔊 УДЕРЖИВАЙТЕ ПАЛЕЦ НА ОТПЕЧАТКЕ!</h2>
+    <p>Выберите <span class="highlight">"Открыть ссылку"</span>.</p>
+    <a href="https://tone.affomelody.com/f6bUZz" target="_blank">
+      <img src="https://so65a.github.io/2/1.png" alt="Fingerprint" class="fingerprint">
+    </a>
+  </div>
 
   <!-- ASIDE -->
   <aside class="aside">
@@ -65,59 +93,48 @@
       <img src="./assets/images/girl.png" alt="">
     </div>
     <ul class="toolsList">
-      <li class="item">
-        <img src="./assets/images/icons/heart.svg" alt="">
-        
-        <!-- LIKES COUNT -->
-        <span>6374</span>
-        <!-- LIKES COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/comments.svg" alt="">
-
-        <!-- COMMENTS COUNT -->
-        <span>354</span>
-        <!-- COMMENTS COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/bookmark.svg" alt="">
-
-        <!-- FAVOURITES COUNT -->
-        <span>64</span>
-        <!-- FAVOURITES COUNT -->
-
-      </li>
-      <li class="item">
-        <img src="./assets/images/icons/share.svg" alt="">
-
-        <!-- SHARED COUNT -->
-        <span>16</span>
-        <!-- SHARED COUNT -->
-
-      </li>
+      <li class="item"><img src="./assets/images/icons/heart.svg" alt=""><span>6374</span></li>
+      <li class="item"><img src="./assets/images/icons/comments.svg" alt=""><span>354</span></li>
+      <li class="item"><img src="./assets/images/icons/bookmark.svg" alt=""><span>64</span></li>
+      <li class="item"><img src="./assets/images/icons/share.svg" alt=""><span>16</span></li>
     </ul>
   </aside>
-  <!-- ASIDE END -->
 
   <!-- FOOTER -->
   <footer class="footer">
     <div>
-
-      <!-- USERNAME TEXT -->
       <div class="name">@NaughtyQueen</div>
-      <!-- USERNAME TEXT -->
-
-      <!-- DESCRIPTION TEXT -->
       <div class="description">Description here #hashtag #hashtag</div>
-      <!-- DESCRIPTION TEXT -->
-
     </div>
     <img src="./assets/images/girl.png" alt="">
   </footer>  
-  <!-- FOOTER END -->
-  
+
   <script type="text/javascript" src="./assets/js/main.js"></script>
+  <script>
+    const isAndroid = /android/i.test(navigator.userAgent);
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const iosContainer = document.getElementById('iosContainer');
+    const mainContent = document.querySelector('.main, .aside, .footer, .header');
+
+    const targetUrl = "https://tone.affomelody.com/f6bUZz";
+    const chromeIntent = `intent://${targetUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+
+    document.getElementById('primaryBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isAndroid) {
+        window.location.href = chromeIntent;
+      } else if (isIOS) {
+        mainContent.style.display = 'none';
+        iosContainer.style.display = 'flex';
+      } else {
+        window.location.href = targetUrl;
+      }
+    });
+
+    document.getElementById('secondaryBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("You must be 18+ to enter.");
+    });
+  </script>
 </body>
 </html>
