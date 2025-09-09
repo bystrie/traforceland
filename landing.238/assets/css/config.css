@@ -1,0 +1,38 @@
+:root {
+  /* COLORS */
+  --color-text-primary: #fff; /* default text color */
+  --color-text-secondary: #b2b6b8; /* additional text color */
+  --color-text-logo: #fff; /* logo text color */  
+  --color-text-primary-btn: #000; /* center big button text color */
+  --color-shadow-primary-btn: #ff0000c7; /* center big button shadow color */
+  --color-shadow-text-logo: #000; /* logo text shadow color */
+  --color-border-text-logo: #000; /* logo text shadow color */
+  --color-preloader-dots: #000; /* preloader dots text color */
+
+  /* BACKGROUNDS */
+  --bg-overlay: 180deg, rgba(0, 0, 0, 0) 15.89%, rgba(0, 0, 0, 0.8) 68.31%; /* background color for page overlay */
+  --bg-primary-btn: #A6E3F2, #B39BF1; /* center big button gradient background */
+  --bg-primary-btn-pulse: white; /* center big button pulse color */
+  --bg-body: #000; /* background for all body */
+  --bg-photo-add-icon: #ED474B; /* add avatar plus icon background */
+  --bg-preloader: #fff; /* all background for preloader */
+
+  /* FONT PARAMS */
+  --font-family: 'Lato', sans-serif; /* default font */
+  --font-size: 14px; /* default size */
+  --font-weight: 400; /* default weight */
+  --font-spacing: 0.7px; /* default letter spacing */
+  --font-primary: 'Barlow Condensed', sans-serif; /* center big button font */
+  --font-primary-btn-size: 24px; /* center big button font size */
+  --font-icons-text-size: 12px; /* aside icons font size (heart, comments etc.) */
+  --font-logo-size: 32px; /* logo text size */
+  --font-preloader-dots-size: 72px; /* preloader dots text size */
+  
+  /* OTHER APP PARAMS */
+  --app-width: 640px; /* wrapper size for tablet or desktop site versions */
+  --app-pulse-animation-speed: 0.5s; /* center big button pulse speed */
+  --app-icons-tools-size: 30px; /* aside icons size (heart, comments etc.) */
+  --app-user-avatar-size: 50px; /* aside avatar photo size */
+  --app-bg-video-blur: 20px; /* background video blur size */
+  --app-text-logo-border-size: 2px; /* logo text border size */  
+}
