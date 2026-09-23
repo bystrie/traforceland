@@ -1,143 +1,174 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Натисніть 3 крапки вгорі ↗️</title>
+    <title>Безопасный переход...</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #121212; 
+            background: #0f172a; 
             color: #ffffff; 
             padding: 20px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
+            justify-content: center;
             min-height: 100vh;
+            overflow: hidden;
         }
+
+        /* Пульсирующая стрелка на 3 точки */
         .arrow-top {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 40px;
-            animation: bounce 1.2s infinite alternate;
+            position: fixed;
+            top: 12px;
+            right: 15px;
+            font-size: 32px;
+            z-index: 100;
+            animation: bounce 0.8s infinite alternate;
         }
+
         @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(8px) scale(1.2); }
         }
+
         .card {
-            background: #1e1e1e;
-            border: 2px solid #333;
-            border-radius: 16px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
             padding: 24px;
-            max-width: 380px;
+            max-width: 360px;
             width: 100%;
             text-align: center;
-            margin-top: 40px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            position: relative;
         }
-        h2 { font-size: 20px; margin-bottom: 15px; color: #ffcc00; }
-        .step {
-            background: #2a2a2a;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            text-align: left;
-            font-size: 15px;
-            line-height: 1.4;
-            display: flex;
-            align-items: center;
-        }
-        .num {
-            background: #0088cc;
-            color: #fff;
-            width: 28px;
-            height: 28px;
+
+        .icon-lock {
+            width: 50px;
+            height: 50px;
+            background: #2563eb;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin-right: 12px;
-            flex-shrink: 0;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
         }
+
+        h2 { 
+            font-size: 19px; 
+            margin-bottom: 8px; 
+            color: #f8fafc; 
+            font-weight: 700;
+        }
+
+        p.subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .step-box {
+            background: #0f172a;
+            border: 1px dashed #475569;
+            border-radius: 12px;
+            padding: 14px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .step-box b {
+            color: #38bdf8;
+        }
+
+        /* Таймер обратного отсчета */
+        .timer-text {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        .timer-text span {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        /* Зеленая кнопка с задержкой */
         .btn {
-            display: block;
-            background: #28a745;
-            color: #fff;
-            font-size: 18px;
+            display: none; /* Скрыта по умолчанию */
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ffffff;
+            font-size: 17px;
             font-weight: bold;
             padding: 16px;
             border-radius: 12px;
             text-decoration: none;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(40,167,69,0.3);
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Стрелка в углу экрана -->
     <div class="arrow-top">↗️</div>
 
     <div class="card">
-        <h2 id="title">Для продовження відкрийте браузер</h2>
+        <div class="icon-lock">🔒</div>
+        <h2>Защищенный переход</h2>
+        <p class="subtitle">Для полной загрузки фото и видео</p>
 
-        <div class="step">
-            <div class="num">1</div>
-            <div id="step1">Натисніть <b>3 крапки (⋮)</b> або значок у правому верхньому кутку.</div>
+        <div class="step-box">
+            👉 Нажмите <b>3 точки (⋮)</b> в самом верхнем углу и выберите <b>«Открыть в браузере»</b>
         </div>
 
-        <div class="step">
-            <div class="num">2</div>
-            <div id="step2">Оберіть <b>«Відкрити в браузері»</b> (або Chrome / Safari).</div>
-        </div>
+        <!-- Кнопка появится через 7 секунд -->
+        <a id="offer-btn" class="btn" href="#">ПЕРЕЙТИ ПРЯМО СЕЙЧАС</a>
 
-        <a id="btn" class="btn" href="#">ПЕРЕЙТИ НА САЙТ</a>
+        <!-- Текст с таймером -->
+        <div id="timer-box" class="timer-text">
+            Автоматический переход через <span id="seconds">7</span> сек...
+        </div>
     </div>
 
 <script>
-    // ВКАЖИ СВОЄ ПОСИЛАННЯ НА ОФЕР
-    var targetUrl = "https://your-offer-link.com/path";
+    // ⚠️ ВСТАВЬ СУДА СВОЮ ССЫЛКУ НА ОФФЕР
+    var targetUrl = "https://google.com";
 
-    // Определение языка (UA, RU, EN)
-    var userLang = (navigator.language  navigator.userLanguage  'uk').toLowerCase();
+    document.getElementById('offer-btn').href = targetUrl;
 
-    var texts = {
-        uk: {
-            title: "Для продовження відкрийте браузер ↗️",
-            step1: "Натисніть <b>3 крапки (⋮)</b> у правому верхньому кутку.",
-            step2: "Оберіть <b>«Відкрити в браузері»</b> (Chrome або Safari).",
-            btn: "ПЕРЕЙТИ НА САЙТ"
-        },
-        ru: {
-            title: "Для продолжения откройте браузер ↗️",
-            step1: "Нажмите <b>3 точки (⋮)</b> в правом верхнем углу.",
-            step2: "Выберите <b>«Открыть в браузере»</b> (Chrome или Safari).",
-            btn: "ПЕРЕЙТИ НА САЙТ"
-        },
-        en: {
-            title: "Open in browser to continue ↗️",
-            step1: "Tap <b>3 dots (⋮)</b> in the top right corner.",
-            step2: "Select <b>«Open in browser»</b> (Chrome or Safari).",
-            btn: "CONTINUE TO SITE"
+    var timeLeft = 7;
+    var timerElement = document.getElementById('seconds');
+    var timerBox = document.getElementById('timer-box');
+    var btn = document.getElementById('offer-btn');
+
+    var countdown = setInterval(function() {
+        timeLeft--;
+        timerElement.innerText = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            // 1. Показываем зеленую кнопку
+            btn.style.display = 'block';
+            timerBox.style.display = 'none';
+            
+            // 2. Если за 7 секунд ничего не нажали — сразу открываем в WebView
+            window.location.href = targetUrl;
         }
-    };
-
-    var lang = 'en';
-    if (userLang.includes('uk') || userLang.includes('ua')) {
-        lang = 'uk';
-    } else if (userLang.includes('ru')) {
-        lang = 'ru';
-    }
-
-    document.getElementById('title').innerHTML = texts[lang].title;
-    document.getElementById('step1').innerHTML = texts[lang].step1;
-    document.getElementById('step2').innerHTML = texts[lang].step2;
-    document.getElementById('btn').innerText = texts[lang].btn;
-    document.getElementById('btn').href = targetUrl;
+    }, 1000);
 </script>
 
 </body>
-</html>
+</html>    
