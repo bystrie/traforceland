@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Открываем...</title>
+  <title>Открыть в браузере</title>
   <style>
-    * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      background: #0f0f0f;
+      padding: 30px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #111;
       color: #fff;
       text-align: center;
       min-height: 100vh;
@@ -19,117 +18,74 @@
       justify-content: center;
       align-items: center;
     }
-    h2 { margin: 0 0 12px; font-size: 22px; }
-    p { color: #aaa; margin: 0 0 30px; font-size: 15px; }
+    h1 {
+      font-size: 22px;
+      margin: 0 0 15px;
+    }
+    .desc {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      max-width: 320px;
+    }
     .btn {
       display: block;
       width: 100%;
       max-width: 320px;
-      padding: 18px 24px;
+      padding: 18px;
       background: #0088cc;
       color: white;
       text-decoration: none;
       border-radius: 14px;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 600;
       margin-bottom: 12px;
     }
-    .btn.secondary {
-      background: #222;
-      border: 1px solid #444;
+    .btn:active { opacity: 0.85; }
+    .hint {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #666;
+      max-width: 300px;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
 
-  <h2>Открываем ссылку</h2>
-  <p>Если не открылось автоматически — нажми кнопку</p>
+  <h1>Ссылка открылась внутри Telegram</h1>
+  <div class="desc">
+    Чтобы открыть нормально — нажми кнопку ниже<br>
+    или долгий тап по ссылке → «Открыть в браузере»
+  </div>
 
-  <a id="mainBtn" class="btn" href="#">Открыть во внешнем браузере</a>
-  <a id="chromeBtn" class="btn secondary" href="#">Открыть в Chrome</a>
+  <a id="openBtn" class="btn" href="#">Открыть во внешнем браузере</a>
+
+  <div class="hint">
+    Если кнопка не помогает — зажми ссылку в посте Telegram и выбери «Открыть в браузере»
+  </div>
 
   <script>
-    // ===== СЮДА СВОЙ АДРЕС =====
+    // ===== ТВОЙ АДРЕС =====
     const TARGET = "https://google.com";
-    // ==========================
+    // =====================
 
-    const mainBtn = document.getElementById("mainBtn");
-    const chromeBtn = document.getElementById("chromeBtn");
+    const btn = document.getElementById("openBtn");
+    btn.href = TARGET;
 
-    mainBtn.href = TARGET;
-    chromeBtn.href = TARGET;
-
-    function isTelegram() {
-      return !!(
-        window.TelegramWebview ||
-        window.TelegramWebviewProxy ||
-        window.TelegramGameProxy ||
-        /Telegram/i.test(navigator.userAgent)
-      );
-    }
-
-    function tryOpenExternal() {
-      if (!/Android/i.test(navigator.userAgent)) {
-        window.location.href = TARGET;
-        return;
-      }
-
+    // Пробуем всё возможное при загрузке (на всякий случай)
+    if (/Android/i.test(navigator.userAgent)) {
       const clean = TARGET.replace(/^https?:\/\//, "");
-
-      // Вариант 1 — самый полный intent
-      const intent1 = `intent://${clean}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;end`;
       
-      // Вариант 2 — принудительно Chrome
-      const intent2 = `intent://${clean}#Intent;scheme=https;package=com.android.chrome;end`;
-
-      // Вариант 3 — через создание ссылки и клик (иногда проходит лучше)
-      function clickLink(url) {
-        const a = document.createElement("a");
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }
-
-      // Пробуем по очереди
-      try {
-        window.location.href = intent1;
-      } catch (e) {}
-
+      // несколько попыток
       setTimeout(() => {
-        try { window.location.href = intent2; } catch (e) {}
-      }, 400);
-
+        window.location.href = `intent://${clean}#Intent;scheme=https;package=com.android.chrome;end`;
+      }, 300);
+      
       setTimeout(() => {
-        clickLink(intent1);
+        window.location.href = `intent://${clean}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
       }, 800);
-
-      setTimeout(() => {
-        clickLink(intent2);
-      }, 1200);
-    }
-
-    // Кнопки тоже используют intent
-    mainBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      tryOpenExternal();
-      // запасной обычный переход через 1.5 сек
-      setTimeout(() => { window.location.href = TARGET; }, 1500);
-    });
-
-    chromeBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      const clean = TARGET.replace(/^https?:\/\//, "");
-      window.location.href = `intent://${clean}#Intent;scheme=https;package=com.android.chrome;end`;
-    });
-
-    // Автоматическая попытка при загрузке
-    if (isTelegram()) {
-      tryOpenExternal();
-    } else {
-      window.location.replace(TARGET);
     }
   </script>
 
