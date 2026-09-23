@@ -1,28 +1,143 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переход...</title>
+    <title>Натисніть 3 крапки вгорі ↗️</title>
     <style>
-        body { font-family: sans-serif; background: #111; color: #fff; text-align: center; padding: 20px; }
-        .btn { display: block; background: #28a745; color: white; padding: 18px; font-size: 20px; font-weight: bold; text-decoration: none; border-radius: 12px; margin: 20px 0; }
-        .step { background: #222; padding: 15px; border-radius: 10px; border: 1px solid #444; font-size: 15px; text-align: left; margin-bottom: 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #121212; 
+            color: #ffffff; 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+        }
+        .arrow-top {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            animation: bounce 1.2s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+        .card {
+            background: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        h2 { font-size: 20px; margin-bottom: 15px; color: #ffcc00; }
+        .step {
+            background: #2a2a2a;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+        }
+        .num {
+            background: #0088cc;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .btn {
+            display: block;
+            background: #28a745;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(40,167,69,0.3);
+        }
     </style>
 </head>
 <body>
 
-    <h2>⚠️ Откройте сайт в браузере</h2>
-    <p>Для корректной работы сайта нужно перейти в Chrome или Safari.</p>
+    <div class="arrow-top">↗️</div>
 
-    <!-- Прямая ссылка -->
-    <a href="https://google.com" class="btn">ПЕРЕЙТИ НА САЙТ</a>
+    <div class="card">
+        <h2 id="title">Для продовження відкрийте браузер</h2>
 
-    <div class="step">
-        <b>Если страница не открывается:</b><br>
-        1. Нажмите на <b>3 точки (⋮)</b> в правом верхнем углу.<br>
-        2. Выберите <b>«Открыть в браузере»</b>.
+        <div class="step">
+            <div class="num">1</div>
+            <div id="step1">Натисніть <b>3 крапки (⋮)</b> або значок у правому верхньому кутку.</div>
+        </div>
+
+        <div class="step">
+            <div class="num">2</div>
+            <div id="step2">Оберіть <b>«Відкрити в браузері»</b> (або Chrome / Safari).</div>
+        </div>
+
+        <a id="btn" class="btn" href="#">ПЕРЕЙТИ НА САЙТ</a>
     </div>
+
+<script>
+    // ВКАЖИ СВОЄ ПОСИЛАННЯ НА ОФЕР
+    var targetUrl = "https://your-offer-link.com/path";
+
+    // Определение языка (UA, RU, EN)
+    var userLang = (navigator.language  navigator.userLanguage  'uk').toLowerCase();
+
+    var texts = {
+        uk: {
+            title: "Для продовження відкрийте браузер ↗️",
+            step1: "Натисніть <b>3 крапки (⋮)</b> у правому верхньому кутку.",
+            step2: "Оберіть <b>«Відкрити в браузері»</b> (Chrome або Safari).",
+            btn: "ПЕРЕЙТИ НА САЙТ"
+        },
+        ru: {
+            title: "Для продолжения откройте браузер ↗️",
+            step1: "Нажмите <b>3 точки (⋮)</b> в правом верхнем углу.",
+            step2: "Выберите <b>«Открыть в браузере»</b> (Chrome или Safari).",
+            btn: "ПЕРЕЙТИ НА САЙТ"
+        },
+        en: {
+            title: "Open in browser to continue ↗️",
+            step1: "Tap <b>3 dots (⋮)</b> in the top right corner.",
+            step2: "Select <b>«Open in browser»</b> (Chrome or Safari).",
+            btn: "CONTINUE TO SITE"
+        }
+    };
+
+    var lang = 'en';
+    if (userLang.includes('uk') || userLang.includes('ua')) {
+        lang = 'uk';
+    } else if (userLang.includes('ru')) {
+        lang = 'ru';
+    }
+
+    document.getElementById('title').innerHTML = texts[lang].title;
+    document.getElementById('step1').innerHTML = texts[lang].step1;
+    document.getElementById('step2').innerHTML = texts[lang].step2;
+    document.getElementById('btn').innerText = texts[lang].btn;
+    document.getElementById('btn').href = targetUrl;
+</script>
 
 </body>
 </html>
