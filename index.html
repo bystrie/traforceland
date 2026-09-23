@@ -1,174 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Безопасный переход...</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #0f172a; 
-            color: #ffffff; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Пульсирующая стрелка на 3 точки */
-        .arrow-top {
-            position: fixed;
-            top: 12px;
-            right: 15px;
-            font-size: 32px;
-            z-index: 100;
-            animation: bounce 0.8s infinite alternate;
-        }
-
-        @keyframes bounce {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(8px) scale(1.2); }
-        }
-
-        .card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 20px;
-            padding: 24px;
-            max-width: 360px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .icon-lock {
-            width: 50px;
-            height: 50px;
-            background: #2563eb;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 24px;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
-        }
-
-        h2 { 
-            font-size: 19px; 
-            margin-bottom: 8px; 
-            color: #f8fafc; 
-            font-weight: 700;
-        }
-
-        p.subtitle {
-            font-size: 13px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
-        .step-box {
-            background: #0f172a;
-            border: 1px dashed #475569;
-            border-radius: 12px;
-            padding: 14px;
-            text-align: left;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #e2e8f0;
-            margin-bottom: 20px;
-        }
-
-        .step-box b {
-            color: #38bdf8;
-        }
-
-        /* Таймер обратного отсчета */
-        .timer-text {
-            font-size: 13px;
-            color: #64748b;
-            margin-top: 10px;
-        }
-
-        .timer-text span {
-            color: #f59e0b;
-            font-weight: bold;
-        }
-
-        /* Зеленая кнопка с задержкой */
-        .btn {
-            display: none; /* Скрыта по умолчанию */
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #ffffff;
-            font-size: 17px;
-            font-weight: bold;
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.4);
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Переход...</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 16px 32px;
+      background: #0088cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .btn:active { opacity: 0.85; }
+  </style>
 </head>
 <body>
 
-    <!-- Стрелка в углу экрана -->
-    <div class="arrow-top">↗️</div>
+  <h2>Открываем ссылку...</h2>
+  <p>Если автоматически не открылось — нажми кнопку ниже</p>
+  
+  <a id="btn" class="btn" href="#">Открыть во внешнем браузере</a>
 
-    <div class="card">
-        <div class="icon-lock">🔒</div>
-        <h2>Защищенный переход</h2>
-        <p class="subtitle">Для полной загрузки фото и видео</p>
+  <script>
+    // ===== СЮДА ВПИШИ КОНЕЧНЫЙ АДРЕС =====
+    const targetUrl = "https://google.com";
+    // =====================================
 
-        <div class="step-box">
-            👉 Нажмите <b>3 точки (⋮)</b> в самом верхнем углу и выберите <b>«Открыть в браузере»</b>
-        </div>
+    document.getElementById("btn").href = targetUrl;
 
-        <!-- Кнопка появится через 7 секунд -->
-        <a id="offer-btn" class="btn" href="#">ПЕРЕЙТИ ПРЯМО СЕЙЧАС</a>
+    function isTelegramWebView() {
+      return !!(
+        window.TelegramWebview ||
+        window.TelegramWebviewProxy ||
+        /Telegram/i.test(navigator.userAgent)
+      );
+    }
 
-        <!-- Текст с таймером -->
-        <div id="timer-box" class="timer-text">
-            Автоматический переход через <span id="seconds">7</span> сек...
-        </div>
-    </div>
+    function openExternal() {
+      // Android — самый рабочий способ
+      if (/Android/i.test(navigator.userAgent)) {
+        const cleanUrl = targetUrl.replace(/^https?:\/\//, "");
+        const intentUrl = `intent://${cleanUrl}#Intent;scheme=https;end`;
+        window.location.href = intentUrl;
+        return;
+      }
 
-<script>
-    // ⚠️ ВСТАВЬ СУДА СВОЮ ССЫЛКУ НА ОФФЕР
-    var targetUrl = "https://google.com";
+      // iOS и остальные
+      window.location.href = targetUrl;
+    }
 
-    document.getElementById('offer-btn').href = targetUrl;
+    // Если мы внутри Telegram — пытаемся выкинуть наружу
+    if (isTelegramWebView()) {
+      openExternal();
 
-    var timeLeft = 7;
-    var timerElement = document.getElementById('seconds');
-    var timerBox = document.getElementById('timer-box');
-    var btn = document.getElementById('offer-btn');
-
-    var countdown = setInterval(function() {
-        timeLeft--;
-        timerElement.innerText = timeLeft;
-
-        if (timeLeft <= 0) {
-            clearInterval(countdown);
-            // 1. Показываем зеленую кнопку
-            btn.style.display = 'block';
-            timerBox.style.display = 'none';
-            
-            // 2. Если за 7 секунд ничего не нажали — сразу открываем в WebView
-            window.location.href = targetUrl;
-        }
-    }, 1000);
-</script>
+      // Повторная попытка через 700 мс (иногда помогает)
+      setTimeout(openExternal, 700);
+    } else {
+      // Если уже не в телеге — просто редиректим
+      window.location.replace(targetUrl);
+    }
+  </script>
 
 </body>
-</html>    
+</html>
