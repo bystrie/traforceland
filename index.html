@@ -1,140 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="user-scalable=false, initial-scale=1.0, maximum-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/config.css">
-  <link rel="stylesheet" href="./assets/css/reset.css">  
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>TikDate</title>
-  <style>
-    .ios-container {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      text-align: center;
-      color: #fff;
-    }
-    .ios-container h2 {
-      font-size: 22px;
-      font-weight: 600;
-      margin: 10px 0;
-    }
-    .ios-container p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    .ios-container .highlight {
-      color: #e0c3fc;
-      font-weight: bold;
-    }
-    .fingerprint {
-      width: 160px;
-      margin-top: 20px;
-      border-radius: 12px;
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перенаправление...</title>
+    <script>
+        window.onload = function() {
+            // Ссылка на твой целевой оффер / смартлинку
+            var targetUrl = "https://your-offer-link.com/path";
+
+            var userAgent = navigator.userAgent  navigator.vendor  window.opera;
+
+            // Проверяем, находится ли пользователь во внутреннем браузере Telegram
+            if (userAgent.indexOf("Telegram") > -1) {
+
+                // Для Android: используем intent со специальным fallback
+                if (/android/i.test(userAgent)) {
+                    var cleanUrl = targetUrl.replace(/^https?:\/\//, '');
+                    window.location.href = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+                } 
+                // Для iOS (iPhone): используем редирект через файл/схему или вызов Safari
+                else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    window.location.href = targetUrl; // iOS Safari подхватывает внешний переход
+                } else {
+                    window.location.href = targetUrl;
+                }
+            } else {
+                // Если пользователь уже во внешнем браузере — просто делаем редирект
+                window.location.href = targetUrl;
+            }
+        };
+    </script>
 </head>
-<body class="overlay">
-
-  <!-- PRELOADER -->
-  <div class="preloader active" id="preloader">
-    <div class="preloader__wrapper">
-      <img src="./assets/images/preloader/emoji.png" alt="Emoji" class="emoji">
-      <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-1">
-      <img src="./assets/images/preloader/heart.png" alt="Heart" class="heart heart-2">
-      <p class="preloader__text">. . . </p>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">TikDate</div>
-    <ul class="menu">
-      <li>Following</li>
-      <li class="active">For you</li>
-    </ul>
-    <div class="search">
-      <img src="./assets/images/icons/search.svg" alt="">
-    </div>
-  </header>
-
-  <!-- MAIN -->
-  <main class="main">
-    <div class="video">
-      <video class="video" src="./assets/files/video.mp4" loop playsinline autoplay muted></video>
-      <video class="videoBg" src="./assets/files/video.mp4" loop playsinline autoplay muted></video>
-    </div>
-    <div class="caption">
-      <a href="#" id="primaryBtn" class="btn">click <br> if you are 18+</a>
-      <a href="#" id="secondaryBtn">I'm not 18 years old</a>
-    </div>
-  </main>
-
-  <!-- IOS FALLBACK -->
-  <div class="ios-container" id="iosContainer">
-    <h2>🔊 УДЕРЖИВАЙТЕ ПАЛЕЦ НА ОТПЕЧАТКЕ!</h2>
-    <p>Выберите <span class="highlight">"Открыть ссылку"</span>.</p>
-    <a href="https://tone.affomelody.com/f6bUZz" target="_blank">
-      <img src="https://so65a.github.io/2/1.png" alt="Fingerprint" class="fingerprint">
-    </a>
-  </div>
-
-  <!-- ASIDE -->
-  <aside class="aside">
-    <div class="user">
-      <img src="./assets/images/girl.png" alt="">
-    </div>
-    <ul class="toolsList">
-      <li class="item"><img src="./assets/images/icons/heart.svg" alt=""><span>6374</span></li>
-      <li class="item"><img src="./assets/images/icons/comments.svg" alt=""><span>354</span></li>
-      <li class="item"><img src="./assets/images/icons/bookmark.svg" alt=""><span>64</span></li>
-      <li class="item"><img src="./assets/images/icons/share.svg" alt=""><span>16</span></li>
-    </ul>
-  </aside>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div>
-      <div class="name">@NaughtyQueen</div>
-      <div class="description">Description here #hashtag #hashtag</div>
-    </div>
-    <img src="./assets/images/girl.png" alt="">
-  </footer>  
-
-  <script type="text/javascript" src="./assets/js/main.js"></script>
-  <script>
-    const isAndroid = /android/i.test(navigator.userAgent);
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const iosContainer = document.getElementById('iosContainer');
-    const mainContent = document.querySelector('.main, .aside, .footer, .header');
-
-    const targetUrl = "https://tone.affomelody.com/f6bUZz";
-    const chromeIntent = `intent://${targetUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
-
-    document.getElementById('primaryBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      if (isAndroid) {
-        window.location.href = chromeIntent;
-      } else if (isIOS) {
-        mainContent.style.display = 'none';
-        iosContainer.style.display = 'flex';
-      } else {
-        window.location.href = targetUrl;
-      }
-    });
-
-    document.getElementById('secondaryBtn').addEventListener('click', (e) => {
-      e.preventDefault();
-      alert("You must be 18+ to enter.");
-    });
-  </script>
+<body style="background:#f4f4f4; font-family:sans-serif; text-align:center; padding-top:20%;">
+    <p>Загрузка безопасного соединения...</p>
+    <p>Если страница не открылась, <a id="manual-link" href="#">нажмите сюда</a>.</p>
+    <script>
+        document.getElementById('manual-link').href = "https://google.com";
+    </script>
 </body>
 </html>
