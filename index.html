@@ -1,27 +1,28 @@
-<?php
-// Твоя ссылка на оффер / смартлинку
-$targetUrl = "https://google.com";
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переход...</title>
+    <style>
+        body { font-family: sans-serif; background: #111; color: #fff; text-align: center; padding: 20px; }
+        .btn { display: block; background: #28a745; color: white; padding: 18px; font-size: 20px; font-weight: bold; text-decoration: none; border-radius: 12px; margin: 20px 0; }
+        .step { background: #222; padding: 15px; border-radius: 10px; border: 1px solid #444; font-size: 15px; text-align: left; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
 
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
+    <h2>⚠️ Откройте сайт в браузере</h2>
+    <p>Для корректной работы сайта нужно перейти в Chrome или Safari.</p>
 
-// Проверяем, зашел ли пользователь из Telegram
-if (strpos($userAgent, 'Telegram') !== false) {
-    // Принудительно отдаем заголовок скачивания файла. 
-    // Telegram WebView не умеет открывать бинарные файлы внутри себя 
-    // и НАПРОЧЬ сбрасывает сессию во внешний браузер (Safari/Chrome).
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="go.html"');
-    
-    // Внутри файла отдаем мгновенный мета-рефреш
-    echo '<!DOCTYPE html><html><head>';
-    echo '<meta http-equiv="refresh" content="0;url='.$targetUrl.'">';
-    echo '</head><body>';
-    echo '<script>window.location.replace("'.$targetUrl.'");</script>';
-    echo '</body></html>';
-    exit();
-} else {
-    // Если юзер уже во внешнем браузере — мгновенно отправляем на оффер
-    header("Location: " . $targetUrl, true, 302);
-    exit();
-}
-?>
+    <!-- Прямая ссылка -->
+    <a href="https://google.com" class="btn">ПЕРЕЙТИ НА САЙТ</a>
+
+    <div class="step">
+        <b>Если страница не открывается:</b><br>
+        1. Нажмите на <b>3 точки (⋮)</b> в правом верхнем углу.<br>
+        2. Выберите <b>«Открыть в браузере»</b>.
+    </div>
+
+</body>
+</html>
