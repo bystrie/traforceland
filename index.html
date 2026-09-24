@@ -6,66 +6,103 @@
     <title>Открыть в браузере</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f4f6fa;
+            color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 350px;
+        .card {
             background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             text-align: center;
+            max-width: 360px;
+            width: 100%;
         }
-        .btn {
+        h2 { font-size: 20px; margin: 0 0 12px 0; color: #111; }
+        p { font-size: 14px; color: #666; margin: 0 0 24px 0; line-height: 1.5; }
+        
+        /* Инструкция со стрелочками */
+        .instruction {
+            background: #f8f9fb;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #475569;
+            text-align: left;
+        }
+        .instruction ol { margin: 0; padding-left: 20px; }
+        .instruction li { margin-bottom: 6px; }
+
+        .btn-copy {
             display: block;
-            padding: 16px 20px;
+            width: 100%;
+            padding: 14px;
             background: #0088cc;
             color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background 0.2s;
         }
+        .btn-copy:active { background: #006699; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Переход на сайт</h2>
-    <p>Нажмите на кнопку ниже, чтобы открыть страницу в основном браузере смартфона.</p>
+<div class="card">
+    <h2>Открыть во внешнем браузере</h2>
+    <p>Встроенный браузер Telegram может ограничивать работу сайта.</p>
     
-    <!-- Ссылка оформлена как скачивание файла -->
-    <a id="open-btn" class="btn" download="redirect.html" href="#">ОТКРЫТЬ В БРАУЗЕРЕ</a>
+    <!-- Динамическая инструкция под Android/iOS -->
+    <div class="instruction">
+        <ol id="steps">
+            <li>Нажмите на <b>три точки</b> (или стрелочку) в верхнем углу экрана.</li>
+            <li>Выберите <b>«Открыть в браузере»</b> (или Safari/Chrome).</li>
+        </ol>
+    </div>
+
+    <button id="copy-btn" class="btn-copy">Скопировать ссылку на сайт</button>
 </div>
 
 <script>
-    // ⚠️ ВПИШИТЕ СЮДА ВАШ ЦЕЛЕВОЙ САЙТ (ОБЯЗАТЕЛЬНО С HTTPS://)
-    const targetUrl = "https://google.com"; 
+    // ⚠️ ВСТАВЬТЕ СЮДА ВАШ ИТОГОВЫЙ САЙТ С HTTPS://
+    const realWebsiteUrl = "https://google.com"; 
 
-    // Генерируем HTML-код для скачиваемого файла-прокладки
-    const redirectHtml = 
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Перенаправление...</title>
-            <script>window.location.href = "${targetUrl}";<\/script>
-        </head>
-        <body>Перенаправление...</body>
-        </html>
-    ;
+    // Адаптируем текст под iOS / Android
+    const steps = document.getElementById('steps');
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        steps.innerHTML = 
+            <li>Нажмите на иконку <b>safari</b> или <b>три точки (...)</b> внизу/вверху экрана.</li>
+            <li>Выберите <b>«Открыть в Safari»</b>.</li>
+        ;
+    }
 
-    // Переводим HTML в base64 формат, имитирующий скачивание файла
-    const base64Html = btoa(unescape(encodeURIComponent(redirectHtml)));
-    const downloadDataUri = "data:attachment/html;base64," + base64Html;
-
-    // Присваиваем кнопке
-    document.getElementById('open-btn').href = downloadDataUri;
+    // Логика кнопки «Скопировать» как запасной вариант
+    document.getElementById('copy-btn').addEventListener('click', function() {
+        navigator.clipboard.writeText(realWebsiteUrl).then(() => {
+            this.innerText = "✓ Ссылка скопирована!";
+            this.style.background = "#10b981";
+            setTimeout(() => {
+                this.innerText = "Скопировать ссылку на сайт";
+                this.style.background = "#0088cc";
+            }, 2000);
+        }).catch(() => {
+            alert("Пожалуйста, скопируйте адрес вручную или откройте через меню сверху.");
+        });
+    });
 </script>
 
 </body>
